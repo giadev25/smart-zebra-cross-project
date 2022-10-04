@@ -19,9 +19,12 @@ Servo traficTranspo;
 Servo crossWalk;
 
 // RGB LED 1
-int red1 = 5;
-int blue1 = 6;
-int green1 = 7;
+int ledRed1 = 10;
+int ledGreen1 = 11;
+
+// RGB LED 2
+int ledRed2 = 7;
+int ledGreen2 = 6;
 
 // defines variables
 long duration; // variable for the duration of sound wave travel
@@ -47,9 +50,12 @@ void setup() {
   pinMode(button, INPUT); // Sets the button pin as an INPUT
   
   // LED RGB 1
-  pinMode(red1, OUTPUT);
-  pinMode(green1, OUTPUT);
-  pinMode(blue1, OUTPUT);
+  pinMode(ledRed1, OUTPUT);
+  pinMode(ledGreen1, OUTPUT);
+
+  // LED RGB 2
+  pinMode(ledRed2, OUTPUT);
+  pinMode(ledGreen2, OUTPUT);
   
   // Servo
   traficTranspo.attach(8);
@@ -96,19 +102,30 @@ void loop() {
   
   // Serial.println(buttonState);
   Serial.println(buttonState || distance <= 10 && distance >= 4);
-  if(buttonState == HIGH || distance <= 5 && distance >= 4) {
+  if(buttonState == HIGH || distance <= 5 && distance > 3) {
+
+    // digitalWrite(ledRed1, HIGH);
+    
+    analogWrite(ledRed1, 0);
+    analogWrite(ledGreen2, 0);
+    analogWrite(ledRed2, 255);
+    analogWrite(ledGreen1, 255);
 
     traficTranspo.write(0);
     crossWalk.write(90);
-    digitalWrite(green1, HIGH);
-    digitalWrite(red1, LOW);
+
+
     delay(5000);
   } else {
+
+    analogWrite(ledRed2, 0);
+    analogWrite(ledGreen1, 0);
+    analogWrite(ledRed1, 255);
+    analogWrite(ledGreen2, 255);
+
   	traficTranspo.write(85);
-    
     crossWalk.write(0);
-    digitalWrite(red1, HIGH);
-    digitalWrite(green1, LOW);
+
   }
 
   
