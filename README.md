@@ -1,1 +1,1 @@
-# smart-zebra-cross-project
+# smart zebra cross project
