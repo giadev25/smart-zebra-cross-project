@@ -1,9 +1,10 @@
 // ---------------------------------------------------------------- //
 // Al Azhar Science Competition
-// Code By Argia M. Ahya
-// 
-// 
-// 
+// Code By Student SMPN 11 KOTA BEKASI: Argia M. Ahya 
+// youtube: Giadev
+// Instagram: @bukan_giadev
+// WA: 085777849958
+// Email: argiamahya1602@gmail.com
 // ---------------------------------------------------------------- //
 #include <Servo.h>
 
@@ -101,21 +102,37 @@ void loop() {
   Serial.println( "cm");
   
   // Serial.println(buttonState);
-  Serial.println(buttonState || distance <= 10 && distance >= 4);
-  if(buttonState == HIGH || distance <= 5 && distance > 3) {
+  Serial.println(buttonState || distance <= 8 && distance >= 4);
+  if(buttonState == HIGH || distance <= 8 && distance > 3) {
 
     // digitalWrite(ledRed1, HIGH);
-    
+
+    analogWrite(ledGreen1, 255);
+    analogWrite(ledRed1, 255);
+    delay(500);
+    analogWrite(ledGreen1, 0);
+    delay(500);
+    analogWrite(ledGreen1, 255);
+    delay(500);
+    analogWrite(ledGreen1, 0);
+    delay(500);
+    analogWrite(ledGreen1, 255);
+    delay(500);
+    analogWrite(ledGreen1, 0);
+    delay(500);
+    analogWrite(ledGreen1, 255);
+
     analogWrite(ledRed1, 0);
     analogWrite(ledGreen2, 0);
     analogWrite(ledRed2, 255);
     analogWrite(ledGreen1, 255);
 
-    traficTranspo.write(0);
     crossWalk.write(90);
+    traficTranspo.write(0);
+    
 
 
-    delay(5000);
+    delay(10000);
   } else {
 
     analogWrite(ledRed2, 0);
