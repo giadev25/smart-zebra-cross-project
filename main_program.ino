@@ -122,29 +122,29 @@ void loop() {
     delay(500);
     analogWrite(ledGreen1, 255);
 
+    traficTranspo.write(0);
+    crossWalk.write(90);
+
     analogWrite(ledRed1, 0);
     analogWrite(ledGreen2, 0);
     analogWrite(ledRed2, 255);
     analogWrite(ledGreen1, 255);
 
-    crossWalk.write(90);
-    traficTranspo.write(0);
-    
-
-
-    delay(10000);
+    delay(5000);
   } else {
+
+    crossWalk.write(0);
+    traficTranspo.write(85);
+
 
     analogWrite(ledRed2, 0);
     analogWrite(ledGreen1, 0);
     analogWrite(ledRed1, 255);
     analogWrite(ledGreen2, 255);
 
-  	traficTranspo.write(85);
-    crossWalk.write(0);
+  	
 
   }
 
   
 }
-
