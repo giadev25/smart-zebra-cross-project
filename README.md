@@ -1,1 +1,2 @@
-# smart zebra cross project
+# Smart zebra cross project
+made by: Giadev
